@@ -1,0 +1,63 @@
+function apartmentHunting(blocks, reqs) {
+
+ 
+  // Initialize variables to keep track of the minimum distance and the index of the optimal block
+  let minDistance = Infinity;
+  let optimalBlockIndex = -1;
+
+  // Iterate through the blocks
+  for (let i = 0; i < blocks.length; i++) {
+    // Initialize a variable to track the maximum distance to a required building for this block
+    let maxDistance = 0;
+
+    // Iterate through the required buildings
+    for (const building of reqs) {
+      // If the building is not present in the block, skip it
+      if (!blocks[i][building]) continue;
+
+      // Calculate the distance to the building
+      const distance = Math.abs(i - optimalBlockIndex);
+
+      // Update the maximum distance if necessary
+      if (distance > maxDistance) {
+        maxDistance = distance;
+      }
+    }
+
+    // Update the minimum distance and the optimal block index if necessary
+    if (maxDistance < minDistance) {
+      minDistance = maxDistance;
+      optimalBlockIndex = i;
+    }
+  }
+
+  // Return the index of the optimal block
+  return optimalBlockIndex;
+}
+
+// Example usage
+
+// Define the list of blocks
+const blocks = [
+  { school: true, gym: true, office: true, pool: false },
+  { school: true, gym: false, office: true, pool: false },
+  { school: true, gym: true, office: false, pool: false },
+  { school: false, gym: true, office: false, pool: false },
+  { school: false, gym: true, office: true, pool: true }
+];
+
+// Define the list of required buildings
+const reqs = ["school", "gym"];
+
+// Find the optimal block
+const optimalBlockIndex = apartmentHunting(blocks, reqs);
+
+// Print the index of the optimal block
+console.log(optimalBlockIndex);
+
+
+}
+
+// Do not edit the line below.
+exports.apartmentHunting = apartmentHunting;
+
