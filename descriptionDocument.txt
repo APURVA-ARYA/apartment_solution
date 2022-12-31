@@ -1,0 +1,18 @@
+The code I provided is a solution to the problem of finding the optimal block for an apartment on a specific street, given a list of contiguous blocks on that street and a list of required buildings.
+
+The solution is implemented in the apartmentHunting function, which takes two arguments: an array of blocks and an array of required buildings. 
+The array of blocks is a list of objects, where each object represents a block on the street and contains properties indicating the presence or absence of various buildings in the block
+(e.g., { school: true, gym: false, office: true, pool: false } represents a block that has a school and an office, but no gym or pool). 
+The array of required buildings is a list of strings representing the buildings that are important to the user (e.g., ["school", "gym"] represents a user who requires a school and a gym).
+
+The apartmentHunting function works by iterating through the blocks and calculating the maximum distance to a required building for each block. 
+To do this, it uses two nested loops: one to iterate through the blocks, and one to iterate through the required buildings.
+For each block, it calculates the distance to each required building that is present in the block, and keeps track of the maximum distance.
+If the maximum distance for the current block is smaller than the minimum distance found so far, the function updates the minimum distance and the index of the optimal block.
+
+Finally, after iterating through all the blocks, the function returns the index of the optimal block. 
+This is the index of the block that minimizes the farthest distance the user would have to walk to reach any of the required buildings.
+
+The example code provided demonstrates how to use the apartmentHunting function to find the optimal block for a user who requires a school and a gym.
+It defines an array of blocks and an array of required buildings, and calls the apartmentHunting function to find the optimal block. 
+Finally, it prints the index of the optimal block to the console.
